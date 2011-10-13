@@ -1,0 +1,46 @@
+<!-- 
+toolbar
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<script src="../jquery/jquery.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+<script src="luban-documentmill.js"> </script>
+<script src="luban-actioncompiler.js"> </script>
+
+<script>
+$(function (){
+
+    var pagedesc = {
+      'type': 'page',
+      'title': "Test page",
+      'contents': []
+    };
+    
+    var toolbar = {
+      'type': 'toolbar',
+      'contents': []
+    };
+    
+    button1 = {type: 'button', id: 'button1', label: 'button1'}
+    button2 = {type: 'button', id: 'button2', label: 'button2'}
+
+    toolbar.contents.push(button1);
+    toolbar.contents.push(button2);
+
+    pagedesc.contents.push(toolbar);
+
+    var mill = new luban.documentmill;  
+    var page = mill.render(pagedesc);
+    
+});
+</script>
+</head>
+
+<body>
+
+<div id="body-wrapper"> </div>
+
+<!-- hhmts start --> Last modified: Wed Jul  8 12:07:28 PDT 2009 <!-- hhmts end -->
+</body> </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jsTree &raquo; Examples </title>
+	<link rel="stylesheet" type="text/css" href="../../source/tree_component.css" />
+	<script type="text/javascript" src="../../../jquery.js"></script>
+	<script type="text/javascript" src="../../_lib/css.js"></script>
+	<script type="text/javascript" src="../../source/tree_component.js"></script>
+</head>
+<body>
+	<div id="container">
+<h2>Predefined HTML</h2>
+<div id="demo1" class="demo">
+</div>
+<script type="text/javascript">
+$(function () {
+    demo1 = $('#demo1');
+    demo1.append('<ul id="root"></ul>');
+    root = $('#root');
+    root.addClass('treeview-container');
+    root.append('<li id="br1"></li>');
+    br1 = $('#br1');
+    br1.append('<a>br1</a>');
+    br1.append('<ul id="br1ul"></ul>');
+    br1.addClass('treeviewbranch-interior-container');
+    br1ul = $('#br1ul');
+    br1ul.addClass('hey');
+    br1ul.append('<li id="lf11"></li>');
+    lf11 = $('#lf11');
+    lf11.append('<a>lf11</a>');
+	$("#demo1").tree();
+});
+</script>
+</div>
+</div>
+</body>
+</html>

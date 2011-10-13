@@ -1,0 +1,13 @@
+SCRATCH/
+build/
+*.pyc
+*.swp
+run/
+SCRATCH/
+SOFTWARE/
+temp/
+apache-cassandra-0.8.5/
+BACKUP/
+
+
+

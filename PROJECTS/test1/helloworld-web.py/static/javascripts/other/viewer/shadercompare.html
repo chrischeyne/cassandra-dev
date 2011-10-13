@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><!--
+Copyright 2009, Google Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+    * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+    * Neither the name of Google Inc. nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<!--
+This sample shows how to place an O3D area in a page and draw simple
+3D shape in it.
+-->
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>
+Testing what output effect.js produces.
+</title>
+<script type="text/javascript" src="../o3d-webgl/base.js"></script>
+<script type="text/javascript" src="../o3djs/base.js"></script>
+<script type="text/javascript" id="o3dscript">
+o3djs.base.o3d = o3d;
+o3djs.require('o3djs.webgl');
+o3djs.require('o3djs.effect');
+
+// Events
+// Run the init() function once the page has finished loading.
+// Run the uninit() function when the page has is unloaded.
+window.onload = init;
+window.onunload = uninit;
+
+// global variables
+var g_o3d;
+var g_math;
+var g_client;
+var g_pack;
+
+/**
+ * Creates the client area.
+ */
+function init() {
+  o3djs.webgl.makeClients(initStep2);
+}
+
+/**
+ * Initializes O3D, creates the cube and sets up the transform and
+ * render graphs.
+ * @param {Array} clientElements Array of o3d object elements.
+ */
+function initStep2(clientElements) {
+
+  // Initializes global variables and libraries.
+  var o3dElement = clientElements[0];
+  g_client = o3dElement.client;
+  g_o3d = o3dElement.o3d;
+  g_math = o3djs.math;
+
+  // Create a pack to manage the objects created.
+  g_pack = g_client.createPack();
+
+//*/
+  var shaderType = 'phong';
+  var material1 = g_pack.createObject('Material');
+  var material2 = g_pack.createObject('Material');
+
+  o3djs.effect.setLanguage('o3d');
+  document.getElementById('cg_out').value =
+    o3djs.effect.buildStandardShaderString(material1, shaderType).shader;
+
+  o3djs.effect.setLanguage('glsl');
+  document.getElementById('glsl_out').value =
+    o3djs.effect.buildStandardShaderString(material2, shaderType).shader;
+/*/
+  o3djs.effect.setLanguage('o3d');
+  document.getElementById('cg_out').value = o3djs.effect.buildCheckerShaderString();
+
+  o3djs.effect.setLanguage('glsl');
+  document.getElementById('glsl_out').value = o3djs.effect.buildCheckerShaderString();
+//*/
+
+}
+
+
+</script>
+</head><body>
+<br>
+
+<!-- Start of O3D plugin -->
+Shaders
+
+<table>
+  <tbody><tr>
+    <td>
+    <div id="o3d" width="300px" height="200px"></div>
+    </td>
+  <td>
+  </td>
+  </tr>
+</tbody></table>
+
+<!-- Don't render the textarea with the shader -->
+<div style="display: none;">
+<!-- Start of effect -->
+<textarea id="shader"></textarea>
+<!-- End of effect -->
+</div>
+
+<table>
+  <tbody><tr>
+    <td>
+      <center>CG</center>
+    </td>
+    <td>
+      <center>GLSL</center>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <textarea id="cg_out" cols="80" rows="55"> </textarea>
+    </td>
+    <td>
+      <textarea id="glsl_out" cols="80" rows="55"> </textarea>
+    </td>
+  </tr>
+</tbody></table>
+
+</body></html>

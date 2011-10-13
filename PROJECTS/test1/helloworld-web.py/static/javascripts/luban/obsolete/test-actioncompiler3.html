@@ -1,0 +1,96 @@
+<!-- form submission -->
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<script src="../jquery/jquery.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-controller.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+<script src="luban-documentmill.js"> </script>
+<script src="luban-actioncompiler.js"> </script>
+
+<script>
+$(function (){
+
+  var pagedesc = {
+  type: 'page',
+  title: "Test page",
+  contents: [],
+  };
+
+  doc = {'type': 'document',
+	 'title': 'Test document',
+	 'id': 'maindoc',
+	 'contents': []
+  };
+  pagedesc.contents.push(doc);
+
+  var form = {
+    'type': 'form',
+    'id': 'theform',
+    'title': 'title of form',
+  };
+  doc.contents.push(form);
+
+  var usernamefield = {
+    'type': 'formtextfield',
+    'name': 'username',
+    'label': 'Username',
+    'value': 'muozi',
+  };
+  
+  var passwordfield = {
+    'type': 'formpasswordfield',
+    'name': 'password',
+    'label': 'Password',
+    'value': '',
+  };
+  
+  var commentfield = {
+    'type': 'formtextarea',
+    'name': 'comment',
+    'label': 'Comments',
+    'value': 'leave your comment',
+  };
+  
+  var selector = {
+    'type': 'formselectorfield',
+    'name': 'selector',
+    'label': 'A selector',
+    'selection': 'A',
+    'entries': [
+    {description: 'A', value: 'A'},
+    {description: 'B', value: 'B'},
+		]
+  };
+  
+  var submit = {
+    'type': 'formsubmitbutton',
+    'label': 'submit',
+  };
+  
+  form.contents = [usernamefield, passwordfield, commentfield, selector, submit];
+    
+
+  luban.Controller.url = 'testformsubmission.html';
+  form.onsubmit = {
+    'type': 'submission',
+    'form': {'type': 'selectbyid', 'id': form.id},
+    'actor': '',
+    'routine': ''
+  };
+
+  var mill = new luban.documentmill;
+  
+  var page = mill.render(pagedesc);
+
+});
+</script>
+</head>
+
+<body>
+
+<div id="body-wrapper"> </div>
+
+<!-- hhmts start --> Last modified: Wed Jul  8 11:25:41 PDT 2009 <!-- hhmts end -->
+</body> </html>

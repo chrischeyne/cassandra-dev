@@ -1,0 +1,60 @@
+<!-- 
+appmenubar
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+
+<style media="all" rel="stylesheet">
+@import url(../jquery/jdMenu-1.4.1/jquery.jdMenu.css);
+  </style>
+
+<script src="../jquery/jquery.js"> </script>
+<script src="../jquery/jdMenu-1.4.1/jquery.bgiframe.js"> </script>
+<script src="../jquery/jdMenu-1.4.1/jquery.dimensions.js"> </script>
+<script src="../jquery/jdMenu-1.4.1/jquery.positionBy.js"> </script>
+<script src="../jquery/jdMenu-1.4.1/jquery.jdMenu.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+<script src="luban-documentmill.js"> </script>
+<script src="luban-actioncompiler.js"> </script>
+
+<script>
+$(function (){
+
+    var pagedesc = {
+      'type': 'page',
+      'title': "Test page",
+    };
+    
+    var menubar = {
+      'type': 'appmenubar',
+    };
+    pagedesc.contents = [menubar];
+
+    var filemenu = {
+      'type': 'appmenu',
+      'label': 'File',
+      'id': 'filemenu',
+    };
+    menubar.contents = [filemenu];
+
+    var fileopen = {
+      'type': 'appmenuitem',
+      'label': 'Open',
+      'id': 'filemenuopen',
+    };
+    filemenu.contents = [fileopen];
+
+    var mill = new luban.documentmill;  
+    var page = mill.render(pagedesc);
+    
+});
+</script>
+</head>
+
+<body>
+
+<div id="body-wrapper"> </div>
+
+<!-- hhmts start --> Last modified: Wed Jul  8 12:08:12 PDT 2009 <!-- hhmts end -->
+</body> </html>

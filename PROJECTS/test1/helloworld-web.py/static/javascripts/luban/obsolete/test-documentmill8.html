@@ -1,0 +1,71 @@
+<!-- 
+treeview
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+
+<style media="all" rel="stylesheet">
+@import url(../jquery/treeview/jquery.treeview.css);
+  </style>
+
+<script src="../jquery/jquery.js"> </script>
+<script src="../jquery/treeview/jquery.treeview.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+<script src="luban-documentmill.js"> </script>
+<script src="luban-actioncompiler.js"> </script>
+
+<script>
+$(function (){
+
+    var pagedesc = {
+      'type': 'page',
+      'title': "Test page",
+    };
+    
+    var treeview = {
+      'type': 'treeview',
+    };
+    pagedesc.contents = [treeview];
+
+    var root = {
+      'type': 'treeviewbranch',
+      'label': 'root',
+      'id': 'treeviewroot',
+    };
+    treeview.root = root;
+
+    var branch1 = {
+      'type': 'treeviewbranch',
+      'label': 'branch1',
+      'id': 'treeviewbranch1',
+    };
+    root.contents = [branch1];
+
+    var leaf2 = {
+      'type': 'treeviewleaf',
+      'label': 'leaf2',
+      'id': 'treeviewleaf2',
+    };
+    root.contents.push(leaf2);
+
+    var leaf11 = {
+      'type': 'treeviewleaf',
+      'label': 'leaf11',
+      'id': 'treeviewleaf11',
+    };
+    branch1.contents = [leaf11];
+
+    var mill = new luban.documentmill;  
+    var page = mill.render(pagedesc);
+    
+});
+</script>
+</head>
+
+<body>
+
+<div id="body-wrapper"> </div>
+
+<!-- hhmts start --> Last modified: Wed Jul  8 12:08:19 PDT 2009 <!-- hhmts end -->
+</body> </html>

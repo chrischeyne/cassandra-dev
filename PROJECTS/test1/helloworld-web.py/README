@@ -1,0 +1,14 @@
+Hello world example using web.py framework
+------------------------------------------
+
+Requires:
+* web.py (http://webpy.org)
+
+Run server::
+
+ $ python server.py
+
+Website::
+
+ http://0.0.0.0:8080/helloworld
+ 

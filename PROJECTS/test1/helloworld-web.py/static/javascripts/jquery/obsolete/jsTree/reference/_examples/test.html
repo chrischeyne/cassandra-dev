@@ -1,0 +1,38 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jsTree &raquo; Examples </title>
+	<link rel="stylesheet" type="text/css" href="../../source/tree_component.css" />
+	<script type="text/javascript" src="../../../jquery.js"></script>
+<!--
+	<script type="text/javascript" src="../../_lib/css.js"></script>
+-->
+	<script type="text/javascript" src="../../source/tree_component.js"></script>
+</head>
+<body>
+	<div id="container">
+<h2>Predefined HTML</h2>
+<div id="demo1" class="demo">
+	<ul>
+		<li id="phtml_1" class="open"><a href="#">Root node 1</a>
+			<ul>
+				<li id="phtml_2"><a href="#" style="background-image:url('../media/images/ok.png');">Custom icon</a></li>
+				<li id="phtml_3"><a href="#">Child node 2</a></li>
+				<li id="phtml_4"><a href="#">Some other child node 111</a></li>
+			</ul>
+		</li>
+		<li id="phtml_5"><a href="#">Root node 2</a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+$(function () {
+	$("#demo1").tree();
+});
+</script>
+</div>
+</div>
+</body>
+</html>

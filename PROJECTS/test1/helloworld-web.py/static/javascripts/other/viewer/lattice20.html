@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<!-- saved from url=(0031)file:///home/jbk/lattice14.html -->
+
+    
+        <title></title>
+    <!--
+<!-- saved from url=(0014)about:internet -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--></head><body>--&gt;
+<link rel="stylesheet" type="text/css" 
+href="lattice20_files/jquery-ui.css">
+ 
+<script type="text/javascript" src="lattice20_files/jquery.js"></script>
+<script type="text/javascript" src="lattice20_files/jquery-ui.js"></script>
+<!--<script type='text/javascript' src='jquery-1.3.2.min.js'></script>
+<script type='text/javascript' src='dropdownMenu.js'></script>-->
+<script type="text/javascript" src="jquery.popupWindow.js"></script>
+<!--<script type='text/javascript' src='supercell.js'></script>-->
+<!--<script type="text/javascript"> -->
+<!--	$(document).ready(function() {-->
+<!--		var mydialog = $('<div></div>')-->
+<!--			.html('This dialog will show every time!')-->
+<!--			.dialog({-->
+<!--				autoOpen: false,-->
+<!--				title: 'Basic Dialog'-->
+<!--			});-->
+<!-- -->
+<!--		$('#opener').click(function() {-->
+<!--			mydialog.dialog('open');-->
+<!--		});-->
+<!--	});-->
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--  $(document).ready(function() {-->
+<!--    $("#dialog").dialog();-->
+<!--  });-->
+<!--</script>-->
+<script type="text/javascript" src="atomInfo.js"></script>
+<script type="text/javascript" src="lattice16.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="../o3d-webgl/base.js"></script>
+<script type="text/javascript" src="../o3djs/base.js"></script>
+<script type="text/javascript">
+o3djs.base.o3d = o3d;
+$(document).ready(function(){
+    var atoms = [['C',[0,0,0]]];
+    var lattice = [[1,0,0],[0,1,0],[0,0,1]];
+	initClient(lattice, atoms);
+})
+</script>
+<!--<body onload="initClient()">-->
+
+
+
+<!--<button id="opener">Open the dialog</button> -->
+
+
+<!--<div style="font-size: 10"><span id="statusInfo"></span></div>-->
+<div id="o3d" width="600" height="600"></div>
+<!--<ul id="main_navigation">-->
+<!--	<li id="trigger0"><a href="">Structure</a>-->
+<!--	<ul class="subNavMenuItems" id="subNav0">-->
+<!--		<li><a href="">New</a></li>-->
+<!--		<li><a href="">Open</a></li>-->
+<!--		<li><a href="discard structure">Discard</a></li>-->
+<!--	</ul>-->
+<!--	</li>-->
+<!--	<li id="trigger1"><a href="">Edit</a>-->
+<!--	<ul class="subNavMenuItems" id="subNav1">-->
+<!--		<li><a href="supercell.html" class="supercell">Create-->
+<!--		supercell</a></li>-->
+<!--		<li><a href="">Add/Delete atoms</a></li>-->
+<!--	</ul>-->
+<!--	</li>-->
+<!--	<li id="trigger2"><a href="">View</a>-->
+<!--	<ul class="subNavMenuItems" id="subNav2">-->
+<!--		<li><a href="">Show bonds</a></li>-->
+<!--	</ul>-->
+<!--	</li>-->
+<!--</ul>-->
+<!--<br>-->
+
+
+
+<!--<div id="dialog" title="Dialog Title">I'm in a dialog</div>-->
+
+</body></html>

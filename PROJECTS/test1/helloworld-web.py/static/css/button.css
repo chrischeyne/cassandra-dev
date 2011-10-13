@@ -1,0 +1,19 @@
+/*  -*- CSS -*-  */
+
+.button {
+    cursor: pointer;
+    font-size: 100%;
+    padding: 1px 5px 1px 5px;
+
+    border-top: 1px solid white;
+    border-right: 1px solid #888888;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid white;
+    background-color: #758273;
+    color: white;    
+}
+
+/* version */
+/* $Id$ */
+
+/* End of file  */

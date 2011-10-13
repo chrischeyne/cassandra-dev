@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+#
+
+#Wed Oct 12 14:16:32 BST 2011
+
+
+# CASSANDRA
+CASSANDRA_VERSION=0.8.5
+CASSANDRA_CORE=/opt/cassandra-dev
+CASSANDRA_HOME=$CASSANDRA_CORE/apache-cassandra-${CASSANDRA_VERSION}
+CASSANDRA_BIN=$CASSANDRA_HOME/bin/cassandra
+CASSANDRA_CONF=$CASSANDRA_CORE/cluster_config
+CASSANDRA_INCLUDE=$CASSANDRA_CONF/cassandra.in.sh
+
+# CASSANDRA.YAML
+CASSANDRA_YAML=$CASSANDRA_CORE/cluster_config/cassandra.yaml
+CASSANDRA_YAML_FILE=-Dcassandra.config=file:${CASSANDRA_YAML}
+CASSANDRA_NODETOOL=$CASSANDRA_HOME/bin/nodetool
+# LOCK FILES - IMPORTANT FOR SHUTDOWN
+
+CASSANDRA_LOG=$CASSANDRA_CORE/log/cassandra.log
+CASSANDRA_PID=$CASSANDRA_CORE/run/cassandra.pid
+CASSANDRA_LOCK=$CASSANDRA_CORE/lock/subsys/cassandra
+PROGRAM="cassandra"
+
+
+# JDK
+JAVA_HOME=/opt/jdk1.6.0_27
+CLASSPATH=${JAVA_HOME}:${CASSANDRA_HOME}/lib
+
+# PYTHON
+PYTHONHOME=/opt/python2.7.2
+
+# ENV
+COREPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+PATH=${PYTHONHOME}/bin:${JAVA_HOME}/bin:${COREPATH}

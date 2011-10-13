@@ -1,0 +1,53 @@
+/* slider specific CSS */
+.slidableGallery {
+    background: url(background_20070622.jpg) no-repeat;
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+    height: 160px;
+    width: 560px;
+}
+
+.slidableGallery UL {
+    position: absolute;
+    list-style: none;
+    overflow: none;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+}
+
+.slidableGallery UL LI {
+    display: inline;
+    //padding: 0;
+}
+
+.slider {
+    width: 542px;
+    height: 17px;
+    margin-top: 140px;
+    margin-left: 5px;
+    padding: 1px;
+    position: absolute;
+    background: url(scrollbar_20070622.png) no-repeat;
+}
+
+.handle {
+    position: absolute;
+    cursor: move;
+    height: 17px;
+    width: 181px;
+    top: 0;
+    background: url(scroller_20080115.png) no-repeat;
+    z-index: 100;
+}
+
+.slider span {
+    color: #bbb;
+    font-size: 80%;
+    cursor: pointer;
+    position: absolute;
+    z-index: 110;
+    top: 3px;
+}
+

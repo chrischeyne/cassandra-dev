@@ -1,0 +1,67 @@
+<!-- 
+page, document, splitter, paragraph
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<script src="../jquery/jquery.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+<script src="luban-documentmill.js"> </script>
+<script src="luban-actioncompiler.js"> </script>
+
+<script>
+$(function (){
+
+  var pagedesc = {
+    'type': 'page',
+    'title': "Test page",
+    'contents': []
+  };
+  
+  var doc = {
+    'type': 'document',
+    'title': 'Test document',
+    'contents': []
+  };
+
+  var splitter = {
+    'type': 'splitter',
+    'direction': 'vertical',
+    'contents': []
+  };
+
+  sec1 = {id: 'section1'}
+  sec2 = {id: 'section2'}
+
+  p1 = {
+    'type': 'paragraph',
+    'contents': [ 'hello from section 1' ]
+  };
+  sec1.contents = [p1];
+
+  p2 = {
+    'type': 'paragraph',
+    'contents': [ 'hello from section 2' ]
+  };
+  sec2.contents = [p2];
+
+  splitter.contents.push(sec1);
+  splitter.contents.push(sec2);
+
+  doc.contents.push(splitter);
+
+  pagedesc.contents.push(doc);
+
+  var mill = new luban.documentmill;  
+  var page = mill.render(pagedesc);
+
+});
+</script>
+</head>
+
+<body>
+
+<div id="body-wrapper"> </div>
+
+<!-- hhmts start --> Last modified: Wed Jul  8 12:06:44 PDT 2009 <!-- hhmts end -->
+</body> </html>

@@ -1,0 +1,155 @@
+// -*- JavaScript -*-
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+//                                   Jiao Lin
+//                      California Institute of Technology
+//                       (C) 2008-2009 All Rights Reserved  
+//
+// {LicenseText}
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+
+
+// requires:
+//    * luban-core.js
+
+
+(function(luban, $) {
+
+  // aliases
+  var ef = luban.elementFactory;
+  var widgets = luban.widgets;
+  var tag = luban.utils.tag;
+
+
+  // documentmill handler
+  var dmp = luban.documentmill.prototype;
+  dmp.onportlet = dmp._onContainer;
+  dmp.onportletitem = dmp._onElement;
+
+
+  // portlet
+  //  factory
+  ef.portlet = function(kwds, docmill, parent) {
+    var vpaddiv = tag('div', {id: kwds.id});
+    vpaddiv.addClass('visualPadding');
+    var div = tag('div'); div.addClass('portlet');
+    vpaddiv.append(div);
+    
+    title = kwds.title
+    if (title != null && title != '') {
+      h5 = tag('h5'); 
+      h5.addClass('luban-portlet-title');
+      h5.text(title);
+      div.append(h5); 
+    }
+    
+    bodydiv = tag('div'); div.append(bodydiv);
+    bodydiv.addClass('portletBody');
+    
+    var ret= vpaddiv.lubanElement('portlet');
+    if (parent) parent.add(ret);
+    return ret;
+  };
+  //  object
+  widgets.portlet = function(elem) {
+    this.super1 = widgets.base;
+    this.super1(elem);
+  };
+  widgets.portlet.prototype = new widgets.base;
+  widgets.portlet.prototype.add = function (subelem) {
+    var container = this.jqueryelem.children('div.portlet');
+    var body = container.children('div.portletBody');
+    body.append(subelem.jqueryelem);
+  };
+  widgets.portlet.prototype.setSelectedItem = function (item) {
+    var container = this.jqueryelem.children('div.portlet');
+    var body = container.children('div.portletBody');
+    body.children('div.portletitem-container').removeClass('selected');
+    item.jqueryelem.addClass('selected');
+  };
+  widgets.portlet.prototype.setAttribute = function(attrs) {
+    var je = this._je;
+    
+    var titlediv = je.find('.luban-portlet-title');
+    var title = attrs.title;
+    if (title != null) {
+      if (!title) titlediv.remove();
+      else {
+	if (titlediv.length==0) {
+	  var h5 = tag('h5'); 
+	  h5.addClass('luban-portlet-title');
+	  je.find('div.portletBody').before(h5);
+	  titlediv = h5;
+	}
+	titlediv.text(title);
+      }
+    }
+  };
+
+
+  // portletitem
+  ef.portletitem = function(kwds, docmill, parent) {
+
+    var visualpadding = tag('div', {id: kwds.id}); 
+    visualpadding.addClass('portletitem-container');
+
+    var containerdiv = tag('div'); visualpadding.append(containerdiv);
+    containerdiv.addClass('portletContent');
+
+    var a = tag('a', {'title':kwds.tip})
+    a.addClass(kwds.Class);
+    containerdiv.append(a);
+
+    // add icon if exists
+    icon = kwds.icon
+    if (icon != null && icon != '') {
+      img = tag('img', {height: 16, width: 16, src: luban.iconpath(icon)});
+      img.addClass(kwds.Class+'Icon');
+      a.append(img);
+    }
+     
+    // text
+    span = tag('span');
+    span.addClass(kwds.Class+"Text");
+    span.text(kwds.label);
+    a.append(span);
+
+    // callbacks
+    var onclick = kwds.onclick; var id = kwds.id;
+    if (onclick != null && onclick != '')
+      a.click( function() { 
+	  var item = $('#'+id).lubanElement();
+	  var portlet = item.getParent();
+	  portlet.setSelectedItem(item);
+	  docmill.compile(kwds.onclick); return false; 
+	} );
+
+    // selected?
+    if (kwds.selected) visualpadding.addClass('selected');
+    var ret = visualpadding.lubanElement('portletitem');
+    if (parent) parent.add(ret);
+    return ret;
+  };
+  //  object
+  widgets.portletitem = function(elem) {
+    this.super1 = widgets.base;
+    this.super1(elem);
+  };
+  widgets.portletitem.prototype = new widgets.base;
+  widgets.portletitem.prototype.getParent = function() {
+    // see portlet.add and portlet factory
+    var item = this._je;
+    var body = item.parent();
+    var portlet = body.parent();
+    var vpad = portlet.parent();
+    return vpad.lubanElement();
+  };
+
+
+ })(luban, jQuery);
+
+
+// End of file

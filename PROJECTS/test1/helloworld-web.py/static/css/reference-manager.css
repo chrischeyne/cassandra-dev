@@ -1,0 +1,17 @@
+/*  -*- CSS -*-  */
+
+#page-columnLeft {
+    width: 16em;
+    padding: 1em;
+    vertical-align: top;
+}
+
+#page-main {
+    padding: 1em;
+    vertical-align: top;
+}
+
+/* version */
+/* $Id$ */
+
+/* End of file  */

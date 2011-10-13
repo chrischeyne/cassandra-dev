@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>test</title>
+
+<script src="../jquery/jquery.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+
+<script>
+var page = luban.elementFactory.page({title:"Wait for this title to change..."});
+setTimeout("page.setTitle('new title')", 1500);
+</script>
+</head>
+
+<body>
+<h1></h1>
+
+
+
+<hr>
+<address></address>
+<!-- hhmts start --> Last modified: Mon Jul  6 13:34:56 PDT 2009 <!-- hhmts end -->
+</body> </html>

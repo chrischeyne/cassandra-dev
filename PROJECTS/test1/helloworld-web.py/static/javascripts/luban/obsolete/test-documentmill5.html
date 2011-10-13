@@ -1,0 +1,56 @@
+<!-- 
+tabs
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+
+<style media="all" rel="stylesheet">
+@import url(../jquery/ui/css/smoothness/ui.all.css);
+  </style>
+
+
+<script src="../jquery/jquery.js"> </script>
+<script src="../jquery/ui/ui.core.js"> </script>
+<script src="../jquery/ui/ui.tabs.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+<script src="luban-documentmill.js"> </script>
+<script src="luban-actioncompiler.js"> </script>
+
+<script>
+$(function (){
+
+    var pagedesc = {
+      'type': 'page',
+      'title': "Test page",
+      'contents': []
+    };
+    
+    var tabs = {
+      'type': 'tabs',
+      'contents': []
+    };
+    
+    tab1 = {type: 'tab', id: 'tab1', label: 'tab1'};
+    tab1.contents = [ {type: 'paragraph', contents: "hello1"} ];
+    tab2 = {type: 'tab', id: 'tab2', label: 'tab2'};
+    tab2.contents = [ {type: 'paragraph', contents: "hello2"} ];
+
+    tabs.contents.push(tab1);
+    tabs.contents.push(tab2);
+
+    pagedesc.contents.push(tabs);
+
+    var mill = new luban.documentmill;  
+    var page = mill.render(pagedesc);
+    
+});
+</script>
+</head>
+
+<body>
+
+<div id="body-wrapper"> </div>
+
+<!-- hhmts start --> Last modified: Wed Jul  8 12:07:47 PDT 2009 <!-- hhmts end -->
+</body> </html>

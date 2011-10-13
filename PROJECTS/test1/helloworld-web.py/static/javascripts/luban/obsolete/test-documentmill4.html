@@ -1,0 +1,46 @@
+<!-- 
+portlet
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<script src="../jquery/jquery.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+<script src="luban-documentmill.js"> </script>
+<script src="luban-actioncompiler.js"> </script>
+
+<script>
+$(function (){
+
+    var pagedesc = {
+      'type': 'page',
+      'title': "Test page",
+      'contents': []
+    };
+    
+    var portlet = {
+      'type': 'portlet',
+      'contents': []
+    };
+    
+    portletitem1 = {type: 'portletitem', id: 'portletitem1', label: 'portletitem1'}
+    portletitem2 = {type: 'portletitem', id: 'portletitem2', label: 'portletitem2'}
+
+    portlet.contents.push(portletitem1);
+    portlet.contents.push(portletitem2);
+
+    pagedesc.contents.push(portlet);
+
+    var mill = new luban.documentmill;  
+    var page = mill.render(pagedesc);
+    
+});
+</script>
+</head>
+
+<body>
+
+<div id="body-wrapper"> </div>
+
+<!-- hhmts start --> Last modified: Wed Jul  8 12:07:38 PDT 2009 <!-- hhmts end -->
+</body> </html>

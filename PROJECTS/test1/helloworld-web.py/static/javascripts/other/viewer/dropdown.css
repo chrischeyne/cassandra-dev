@@ -1,0 +1,39 @@
+﻿#main_navigation
+{	margin: 0;
+	padding: 0}
+	
+	#main_navigation li
+	{	float: left;
+		list-style: none;
+		font: 12px Tahoma, Arial}
+
+	#main_navigation li a
+	{	display: block;
+		background: #ccc;
+		padding: 5px 10px 5px 10px;
+		text-decoration: none;
+		border-right: 1px solid white;
+		width: auto;
+		color: #333;
+		white-space: nowrap}
+
+	#main_navigation li a:hover
+	{	background: #999;}
+		
+		#main_navigation li ul
+		{	margin: 0;
+			padding: 0;
+			position: absolute;
+			visibility: hidden;
+			border-top: 1px solid white}
+		
+		#main_navigation li ul li
+		{	float: none;
+			display: inline}
+		
+		#main_navigation li ul li a
+		{	width: auto;
+			background: #ccc;}
+		
+		#main_navigation li ul li a:hover
+		{	background: #999;}

@@ -1,0 +1,93 @@
+<!-- 
+table cell change
+-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+
+<style media="all" rel="stylesheet">
+@import url(../jquery/tabulator/tabulator.css);
+  </style>
+<style media="all" rel="stylesheet">
+@import url(../jquery/tabulator/tabulator-color.css);
+  </style>
+
+<script src="../jquery/jquery.js"> </script>
+<script src="../jquery/tableFactory.js"> </script>
+<script src="../jquery/tabulator.js"> </script>
+<script src="luban-core.js"> </script>
+<script src="luban-actioncompiler.js"> </script>
+<script src="luban-documentmill.js"> </script>
+<script src="luban-widgets-basic.js"> </script>
+<script src="luban-widgets-table.js"> </script>
+
+<script>
+$(function (){
+
+    var pagedesc = {
+      'type': 'page',
+      'title': "Test page",
+      'contents': []
+    };
+    
+    var table = {
+      'type': 'table',
+    };
+    pagedesc.contents.push(table);
+
+    status = {
+      'type': 'paragraph',
+      'id': 'status',
+      'contents': ['Status:'],
+    };
+    pagedesc.contents.push(status);
+    
+
+    table.id = 'table';
+
+    table.model = {
+      'id': {'type': 'str',
+	     'name': 'id',
+      },
+      'name': {'type': 'str',
+	       'name': 'name',
+      },
+      'row_identifiers': ['id'],
+    };
+    
+    table.view = {
+    columns : [
+      {'measure': 'id',
+       'label': 'ID',
+      },
+      {'measure': 'name',
+       'label': 'Name',
+       'editable': 1,
+      },
+		 ],
+    editable: 1,
+    };
+
+    table.data = [
+		  ['001', 'alice'],
+		  ['002', 'bob'],
+		  ];
+
+    table.oncellchanged = {
+      'type': 'appendelement',
+      'container': {'type': 'selectbyid', 'id': status.id},
+      'element': 'cell changed'
+    };
+
+    var mill = new luban.documentmill;  
+    var page = mill.render(pagedesc);
+    
+});
+</script>
+</head>
+
+<body>
+
+<div id="body-wrapper"> </div>
+
+<!-- hhmts start --> Last modified: Thu Jul  9 07:16:25 PDT 2009 <!-- hhmts end -->
+</body> </html>
