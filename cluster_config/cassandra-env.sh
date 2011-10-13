@@ -14,7 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#Fri Oct  7 16:41:33 BST 2011
+
+#Thu Oct 13 14:49:12 BST 2011
 calculate_heap_sizes()
 {
     case "`uname`" in
@@ -164,17 +165,20 @@ JVM_OPTS="$JVM_OPTS -Djava.net.preferIPv4Stack=true"
 # http://blogs.sun.com/jmxetc/entry/troubleshooting_connection_problems_in_jconsole
 # for more on configuring JMX through firewalls, etc. (Short version:
 # get it working with no firewall first.)
+# ** -- **
+# **  -- MX4J CONFIGURATION ADDED BY CCHEYNE 15SEP2011
+
+
+# **  -- FOR DEVELOPMENT CLUSTER
+# 
+#Thu Oct 13 14:52:44 BST 2011
+JVM_OPTS="$JVM_OPTS -Dmx4jport=7197"
+JVM_OPTS="$JVM_OPTS -Dcassandra.config=file:///opt/cassandra-dev/cluster_config/cassandra.yaml"
+JMX_PORT="7198"
 JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.port=$JMX_PORT" 
 JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.ssl=false" 
 JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.authenticate=false" 
 
-# ** -- **
-# **  -- MX4J CONFIGURATION ADDED BY CCHEYNE 15SEP2011
 
-# M: Thu Oct 13 12:17:37 BST 2011
-# **  -- FOR DEVELOPMENT CLUSTER
-JVM_OPTS="$JVM_OPTS -Dmx4jport=7197"
-JVM_OPTS="$JVM_OPTS -Dcassandra.config=file:///opt/cassandra-dev/cluster_config/cassandra.yaml"
-JMX_PORT="7198"
 # ** -- **
 # ** -- **

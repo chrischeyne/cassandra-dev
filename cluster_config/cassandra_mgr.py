@@ -203,7 +203,7 @@ if __name__ == "__main__":
     cmd = int(sys.argv[1])
     os.chdir(CASSANDRA_HOME)
     os.system('clear')
-    init_environment()
+    #init_environment()
     list_hosts()
     
     # FIXME: luban/django interface 

@@ -18,11 +18,9 @@
 #    CASSANDRA_HOME=`dirname $0`/..
 #fi
 
-
-# -- CONFIGURE TO BOOT CASSANDRA FROM PROPER DIRECTORY
-# 
-
-source ./CLUSTER_ENVIRONMENT.sh
+# SOURCE CLUSTER ENVIRONMENT
+CORE=/opt/cassandra-dev
+source ${CORE}/cluster_config/CLUSTER_ENVIRONMENT.sh
 
 
 # The directory where Cassandra's configs live (required)
