@@ -109,33 +109,16 @@ def cassandra_stop(mycluster=RING_1_dev__allnodes):
     task_run(CASSANDRA_INIT_SCRIPT + " stop", mycluster) 
 
 
-def jdk_getversion(mycluster=RING_1_dev__allnodes):
-    print "** JDK VERSIONS **"
-    print "Java home is " , os.environ["JAVA_HOME"]
-    os.chdir(JAVA_HOME)
-    task_run(JAVA_HOME + "/bin/javac -version", mycluster)
-
-def py_getversion(mycluster=RING_1_dev__allnodes):
-    print "** PYTHON VERSIONS **"
-    print "PYTHON home is " , os.environ["PYTHONHOME"]
-    os.chdir(PYTHONHOME)
-    task_run(PYTHONHOME + "/bin/python -V", mycluster)
-
-
 def cassandra_info(mycluster=RING_1_dev__allnodes):
     print "Cassandra INFO information..."
-    os.chdir(CASSANDRA_BIN)
+    os.chdir(CASSANDRA_HOME)
 
-    cmd1 = CASSANDRA_BIN+"/bin/nodetool -hlocalhost -p" + str(PORT)
-    cmd2 = " cfstats"
-    grep1 = " egrep -i latency"
+    cmd = "cfstats | egrep -i latency"
+    cassandra_nodetool(mycluster,cmd)
 
-    print "Command is " +cmd1+cmd2+grep1
-    task_run(cmd1+cmd2+grep1,nodes=RING_1_dev__allnodes)
-    
 def cassandra_get_keyspaces():
     print "Cassandra RING information..."
-    os.chdir(CASSANDRA_BIN)
+    os.chdir(CASSANDRA_HOME)
     task.run(CASSANDRA_BIN + "/bin/nodetool -hlocalhost -p" + str(PORT) + " ring",nodes=RING_1_dev__bootstrapnodes)
 
 
@@ -154,16 +137,6 @@ def cassandra_load_schema(self,cluster="RING_1_dev_allnodes",filename="schema.tx
     task_run(CASSANDRA_BIN + "/cassandra-cli -hlocalhost -p" +str(PORT) + "-f \
             "+filename, nodes=RING_1_dev__bootstrapnodes)
 
-
- 
-def myport_scan(mycluster=RING_1_dev__allnodes,myport=7199):
-    print "Port scanning for node listening..." , mycluster, myport
-    
-    task_run("fuser -v " + str(myport) + "/tcp",mycluster)
-
-
-
-
 def cassandra_listening(mycluster=RING_1_dev__allnodes):
 
     print "**LISTENING** ON CLUSTER ..." ,mycluster
@@ -174,6 +147,30 @@ def cassandra_listening(mycluster=RING_1_dev__allnodes):
 
     task_run("cat "+ CASSANDRA_YAML + "|egrep \
             -i '(rpc_port|rpc_address)'",mycluster)
+
+
+
+def jdk_getversion(mycluster=RING_1_dev__allnodes):
+    print "** JDK VERSIONS **"
+    print "Java home is " , os.environ["JAVA_HOME"]
+    os.chdir(JAVA_HOME)
+    task_run(JAVA_HOME + "/bin/javac -version", mycluster)
+
+def py_getversion(mycluster=RING_1_dev__allnodes):
+    print "** PYTHON VERSIONS **"
+    print "PYTHON home is " , os.environ["PYTHONHOME"]
+    os.chdir(PYTHONHOME)
+    task_run(PYTHONHOME + "/bin/python -V", mycluster)
+
+
+ 
+def myport_scan(mycluster=RING_1_dev__allnodes,myport=7199):
+    print "Port scanning for node listening..." , mycluster, myport
+    
+    task_run("fuser -v " + str(myport) + "/tcp",mycluster)
+
+
+
 
 def init_environment(mycluster=RING_1_dev__allnodes):
         

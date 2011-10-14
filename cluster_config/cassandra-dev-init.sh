@@ -14,13 +14,13 @@ CORE=/opt/cassandra-dev
 source ${CORE}/cluster_config/CLUSTER_ENVIRONMENT.sh
 
 # -------------------------------------------------------------------
-#echo "CASSANDRA ${CASSANDRA_VERSION} BOOTING"
-#echo "CLASSPATH $CLASSPATH"
-#echo "CASSANDRA_HOME $CASSANDRA_HOME"
-#echo "CASSANDRA_CONF $CASSANDRA_CONF"
-#echo "CASSANDRA_INCLUDE $CASSANDRA_INCLUDE"
-#echo "PATH $PATH"
-#
+echo "CASSANDRA ${CASSANDRA_VERSION} BOOTING"
+echo "CLASSPATH $CLASSPATH"
+echo "CASSANDRA_HOME $CASSANDRA_HOME"
+echo "CASSANDRA_CONF $CASSANDRA_CONF"
+echo "CASSANDRA_INCLUDE $CASSANDRA_INCLUDE"
+echo "PATH $PATH"
+
 # -------------------------------------------------------------------
 
 echo "Cassandra development binary is $CASSANDRA_BIN"
