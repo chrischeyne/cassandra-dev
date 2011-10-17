@@ -95,7 +95,12 @@ def cassandra_ring_status(mycluster=RING_1_dev__allnodes):
     """ display the status of the current cluster RING """
     cassandra_nodetool(mycluster)
 
- 
+def cassandra_histograms(mycluster=RING_1_dev__allnodes):
+     """ display the status of the current cluster RING """
+     cassandra_nodetool(mycluster,cmd="cfhistograms")
+
+
+
 def cassandra_init(mycluster=RING_1_dev__allnodes):
     print "** BOOTING CASSANDRA CLUSTER **"
     os.chdir(CASSANDRA_HOME)
@@ -125,8 +130,8 @@ def cassandra_get_keyspaces():
 
 def cassandra_stress_test(cluster=RING_1_dev__allnodes):
     print "Stress testing CLUSTER %s",cluster
-    os.chdir(CASSANDRA_HOME)
-    task_run(CASSANDRA_HOME + "/cluster-node-stress-test.sh",nodes=cluster)
+    os.chdir(CASSANDRA_CORE)
+    task_run(CASSANDRA_CORE + "/cluster-node-stress-test.sh",cluster)
 
 
 
@@ -222,6 +227,9 @@ if __name__ == "__main__":
         cassandra_stress_test()
     if cmd == 8:
         cassandra_ring_status()
+    if cmd == 9:
+        cassandra_histograms()
+
 
     # run argument 2 quickly from cli ..mgr.py 10 "hostname -f" 
     if cmd == 10:
