@@ -47,22 +47,24 @@ def edit_item(no):
 
         conn = sqlite3.connect('todo.db')
         c = conn.cursor()
-        c.execute("update todo set task = ?, status = ? where id like \
-                ?",(edit,status,no))
+        c.execute("UPDATE todo SET task=?,status=? WHERE id \
+                LIKE?",(edit,status,no))
         conn.commit()
 
-        return '<p>updated no </p>' % no
     else:
         conn = sqlite3.connect('todo.db')
         c = conn.cursor()
-        c.execute("select task from todo where id like?",(str(no)))
+        c.execute("SELECT task FROM todo WHERE id LIKE?",(str(no)))
         cur_data = c.fetchone()
-        
+        return template('edit_task',old=cur_data,no=no)
 
-    return template('edit_task',old=cur_data,no=no)
+# FIXME: UPDATE THIS GET HOMEPAGE OPERATIONAL
+# FIXME: CQL DRIVER?
+@route('/',method='GET')
+def home_page():
+    return template('homepage')
 
 
-#FIXME: TODO: RUN THIS ^^ !!
 
 debug(True)
 run(reloader=True)
